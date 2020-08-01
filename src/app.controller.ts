@@ -22,9 +22,4 @@ export class AppController {
     return req.user;
   }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
-
 }
