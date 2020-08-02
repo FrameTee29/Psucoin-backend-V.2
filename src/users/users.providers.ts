@@ -1,4 +1,5 @@
-import { User} from './users.entity';
+import { User } from "./entity/users.entity";
+
 
 export const usersProviders = [
   {

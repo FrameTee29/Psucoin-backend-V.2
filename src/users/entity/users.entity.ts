@@ -1,7 +1,19 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey,AutoIncrement, HasOne } from 'sequelize-typescript';
+import { Profile } from 'src/profile/entity/profile.entity';
 
 @Table({})
 export class User extends Model<User> {
+
+  @HasOne(() => Profile)
+  profile: Profile;
+
+  @PrimaryKey
+  @Column
+  sid: string;
+
+  @Column
+  password:string;
+
   @Column
   firstname: string;
 
@@ -9,11 +21,6 @@ export class User extends Model<User> {
   lastname: string;
 
   @Column
-  sid: string;
-
-  @Column
-  cardid: string;
-
-  @Column
-  email: string;
+  cid: string;
+  
 }
