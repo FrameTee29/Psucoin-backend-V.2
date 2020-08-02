@@ -22,5 +22,8 @@ export class User extends Model<User> {
 
   @Column
   cid: string;
+
+  @Column
+  email: string;
   
 }
