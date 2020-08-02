@@ -12,7 +12,7 @@ export const databaseProviders = [
         port: 3306,
         username: 'root',
         password: '1234',
-        database: 'psucoin',
+        database: 'psucoin2',
       });
       sequelize.addModels([User,Profile,Transfer]);
       await sequelize.sync();
