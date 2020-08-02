@@ -1,6 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-
-
+import { User } from 'src/users/entity/users.entity';
 
 export const databaseProviders = [
   {
@@ -11,10 +10,10 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: 'password',
-        database: 'nest',
+        password: '1234',
+        database: 'psucoin',
       });
-      sequelize.addModels([]);
+      sequelize.addModels([User]);
       await sequelize.sync();
       return sequelize;
     },
