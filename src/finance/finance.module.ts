@@ -8,6 +8,7 @@ import { usersProviders } from 'src/users/entity/users.providers';
 @Module({
   imports: [DatabaseModule],
   controllers: [FinanceController],
-  providers: [FinanceService]
+  providers: [FinanceService],
+  exports:[FinanceService]
 })
 export class FinanceModule {}
