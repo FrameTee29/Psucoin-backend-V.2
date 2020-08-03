@@ -10,15 +10,10 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class UsersController {
     constructor(private usersService: UsersService,) { }
 
-    // @UseGuards(JwtAuthGuard)
-    // @Get('/')
-    // getAllUser() {
-    //     return this.usersService.findAll();
-    // }
-
+    // API ในการสมใัครบัญชี
     @Post('/signup')
-        makesignup(){
-            return "สมัครบัญชี"
+        makesignup(@Body() CreateUserDto:CreateUserDto){
+            return this.usersService.SignupUser(CreateUserDto);
         }
     
 

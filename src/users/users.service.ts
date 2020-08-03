@@ -11,5 +11,22 @@ var sha256 = require('sha256')
 export class UsersService {
     constructor(@Inject('USERS_REPOSITORY') private user: typeof User) { }
 
+
+    async SignupUser(CreateUserDto:CreateUserDto){
+
+        const userinformation = new User();
+        userinformation.username = CreateUserDto.username;
+        userinformation.password = CreateUserDto.password;
+        userinformation.firstname = CreateUserDto.firstname;
+        userinformation.lastname = CreateUserDto.lastname;
+        userinformation.cid = CreateUserDto.cid;
+        userinformation.publickey = CreateUserDto.publickey;
+        userinformation.privatekey = CreateUserDto.privatekey;
+        userinformation.coin = CreateUserDto.coin;
+
+        return userinformation;
+    }
+
+
 }
 
