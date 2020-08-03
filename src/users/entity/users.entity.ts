@@ -23,5 +23,14 @@ export class User extends Model<User> {
 
   @Column
   email: string;
+
+  @Column
+  publickey: string;
+
+  @Column
+  privatekey: string;
+
+  @Column
+  coin: number;
   
 }
