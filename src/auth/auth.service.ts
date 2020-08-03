@@ -17,6 +17,9 @@ export class AuthService {
   //หลังจากใช้ API ในการ Login 
   async validateUser(username: string, password: string): Promise<any> {
 
+  //check ว่ามี username ใน ระบบไหม
+  //ถ้ามีแล้วให้ดึงข้อมูลขึ้นมา และ อัพเดทเหรียญ
+  //ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
 
 
   }
