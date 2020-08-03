@@ -13,7 +13,12 @@ export class AuthService {
     private usersService: UsersService,
     private jwtService: JwtService) { }
 
+
+  //หลังจากใช้ API ในการ Login 
   async validateUser(username: string, password: string): Promise<any> {
+
+
+
   }
 
 
