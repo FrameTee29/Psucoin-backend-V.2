@@ -27,19 +27,21 @@ export class UsersService {
     }
     /*--------------------------------End Method หาข้อมูล User ในระบบ------------------------------------*/
 
-    //
-    //
-    //
-    //
-    //
-    //
+
+
+
+
+
+
+
+
 
     /*-------------------------------------- Method ในการสมัคร-------------------------------------------*/
     async SignupUser(CreateUserDto: CreateUserDto) {
 
         // Check ก่อนว่ามี Username นี้ในระบบหรือยัง
         const userInDatabase = await this.getUserByPK(CreateUserDto.username);
-        await this.financeService.getPublicKey("teeraphat");
+        await this.financeService.getPrivateKey("teeraphat");
 
         if (userInDatabase) { // ถ้ามีผู้ใช้งานในระบบแล้วจะ รีเทิร์นว่ามีผู้ใช้งานในระบบแล้ว
             return "Already have this account";
@@ -62,13 +64,6 @@ export class UsersService {
         }
     }
     /*--------------------------------End Method ในการสมัคร-------------------------------------------*/
-
-    //
-    //
-    //
-    //
-    //
-    //
 
 
 

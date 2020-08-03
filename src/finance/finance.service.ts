@@ -10,8 +10,8 @@ import { User } from 'src/users/entity/users.entity';
 @Injectable()
 export class FinanceService {
 
-    constructor(@Inject('USERS_REPOSITORY') private user: typeof User,){}
-    
+    constructor(@Inject('USERS_REPOSITORY') private user: typeof User,) { }
+
 
     /*---------------------------------- Method ในสร้าง Wallet----------------------------------------*/
 
@@ -29,20 +29,22 @@ export class FinanceService {
 
 
 
-    /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
-    async getPublicKey(username:string) {
-        const publicKey = await this.user.findOne({
+
+    /*---------------------------------- Method Get ค่า publickey----------------------------------------*/
+
+    async getPublicKey(username: string) {
+        const publickey = await this.user.findOne({
             plain: true,
             attributes: ['publickey'],
             where: {
                 username: username
             }
         })
-        return publicKey.publickey; 
+        return publickey.publickey;
     }
 
-    /*----------------------------------End Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
+    /*----------------------------------End Method Get ค่า publickey----------------------------------------*/
 
 
 
@@ -50,15 +52,23 @@ export class FinanceService {
 
 
 
-    /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
-
-    async getPrivateKey() {
-        
 
 
+
+    /*---------------------------------- Method Get ค่า privatekey----------------------------------------*/
+
+    async getPrivateKey(username: string) {
+        const privatekey = await this.user.findOne({
+            plain: true,
+            attributes: ['privatekey'],
+            where: {
+                username: username
+            }
+        })
+        return privatekey.privatekey;
     }
 
-    /*----------------------------------End Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
+    /*----------------------------------End Method Get ค่า privatekey----------------------------------------*/
 
 
 
@@ -68,6 +78,8 @@ export class FinanceService {
 
 
 
+
+    
     /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
     async getBalance() {
