@@ -5,10 +5,6 @@ import { Table, Column, Model, PrimaryKey,AutoIncrement, HasOne } from 'sequeliz
 export class User extends Model<User> {
 
   @PrimaryKey
-  @AutoIncrement
-  @Column
-  id:number;
-
   @Column
   username: string;
 

@@ -11,12 +11,7 @@ export class CreateUserDto{
     cid: string;
     
     email: string;
-  
-    publickey: string;
-  
-    privatekey: string;
-  
-    coin: number;
+
 }
 
 
