@@ -50,10 +50,13 @@ export class UsersService {
             userinformation.firstname = CreateUserDto.firstname;
             userinformation.lastname = CreateUserDto.lastname;
             userinformation.cid = CreateUserDto.cid;
-            const keys = await this.financeService.createWallet();
+            userinformation.email = CreateUserDto.email;
+
+            const keys = await this.financeService.createWallet(); // ไปสร้าง publickey and private key 
             console.log(JSON.stringify(keys));
+
             userinformation.publickey = keys.address;
-            userinformation.privatekey = keys.privateKey.toUpperCase().substring(2);
+            userinformation.privatekey = keys.privateKey.toUpperCase().substring(2); // ทำเป็นตัวใหญ่ และทำการตัด 0x ด้านหน้าออก
             userinformation.coin = 0;
             return await this.user.create(userinformation.toJSON());;
         }
