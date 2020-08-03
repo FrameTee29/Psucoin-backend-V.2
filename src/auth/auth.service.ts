@@ -3,7 +3,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { CreateProfileDto } from './dto/createProfile.dto';
 import * as bcrypt from 'bcrypt';
-import { CreateUserDto, infoforwallet } from 'src/users/dto/create-user.dto';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
 
 var sha256 = require('sha256');
 

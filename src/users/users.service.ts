@@ -1,6 +1,6 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { User } from './entity/users.entity';
-import { CreateUserDto, CreateUserDetailDto } from './dto/create-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
 import { createWriteStream } from 'fs';
 import * as soap from 'soap';
 import * as bcrypt from 'bcrypt';

@@ -4,10 +4,8 @@ import { Table, Column, Model, PrimaryKey,AutoIncrement, HasOne } from 'sequeliz
 @Table({})
 export class User extends Model<User> {
 
-
-  @PrimaryKey
   @Column
-  sid: string;
+  username: string;
 
   @Column
   password:string;

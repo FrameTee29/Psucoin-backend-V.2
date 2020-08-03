@@ -1,30 +1,22 @@
-
-
-
 export class CreateUserDto{
-
-
-    username:string;
+    
+    username: string;
+  
     password:string;
-
+    
+    firstname: string;
+  
+    lastname: string;
+    
+    cid: string;
+    
+    email: string;
+  
+    publickey: string;
+  
+    privatekey: string;
+  
+    coin: number;
 }
 
-export class CreateUserDetailDto{
 
-
-    sid:string;
-    firstname:string;
-    lastname:string;
-    cid:string;
-
-}
-
-export class infoforwallet{
-
-    sid:string;
-    firstname:string;
-    lastname:string;
-    cid:string;
-    createdAt:string;
-    updatedAt:string;
-}
