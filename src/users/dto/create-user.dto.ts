@@ -12,6 +12,8 @@ export class CreateUserDto{
     
     email: string;
 
+    coin:any;
+
 }
 
 

@@ -4,6 +4,7 @@ const web3 = new Web3('https://ropsten.infura.io/v3/8d1234baedad4a588a49a51ac993
 import * as token from './Token/detail-token.dto';
 import { async } from 'rxjs/internal/scheduler/async';
 import { User } from 'src/users/entity/users.entity';
+import { CreateUserDto } from 'src/users/dto/create-user.dto';
 
 
 
@@ -26,11 +27,6 @@ export class FinanceService {
 
 
 
-
-
-
-
-
     /*---------------------------------- Method Get ค่า publickey----------------------------------------*/
 
     async getPublicKey(username: string) {
@@ -45,11 +41,6 @@ export class FinanceService {
     }
 
     /*----------------------------------End Method Get ค่า publickey----------------------------------------*/
-
-
-
-
-
 
 
 
@@ -75,11 +66,6 @@ export class FinanceService {
 
 
 
-
-
-
-
-
     /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
     async getBalance(username:string) {
@@ -93,6 +79,27 @@ export class FinanceService {
     }
 
     /*----------------------------------End Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
+
+
+
+
+
+    /*---------------------------------- Method อัพเดทเหรียญ----------------------------------------*/
+
+    async getUpdateBalance(username:string ) {
+        const updateData = new CreateUserDto();
+        const data = await this.user.findOne({where:{username:username}})
+        updateData.username = data.username;
+        updateData.firstname = data.firstname;
+        updateData.lastname = data.lastname;
+        updateData.cid = data.cid;
+        updateData.email = data.email;
+        updateData.coin = await this.getBalance(username);
+        await data.update(updateData)
+        
+    }
+
+    /*----------------------------------End Method อัพเดทเหรียญ----------------------------------------*/
 
 
 

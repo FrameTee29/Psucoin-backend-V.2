@@ -6,6 +6,8 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
+import { FinanceService } from 'src/finance/finance.service';
+import { FinanceModule } from 'src/finance/finance.module';
 
 
 @Module({
@@ -14,9 +16,9 @@ import { JwtStrategy } from './jwt.strategy';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '3600s' },
     }),
-  UsersModule,
+  UsersModule,FinanceModule
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy,],
   exports: [AuthService],
 })
 export class AuthModule { }
