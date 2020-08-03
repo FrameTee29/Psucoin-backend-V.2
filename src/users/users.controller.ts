@@ -16,4 +16,10 @@ export class UsersController {
     //     return this.usersService.findAll();
     // }
 
+    @Post('/signup')
+        makesignup(){
+            return "สมัครบัญชี"
+        }
+    
+
 }
