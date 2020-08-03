@@ -1,7 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
 import { User } from 'src/users/entity/users.entity';
-import { Profile } from 'src/profile/entity/profile.entity';
-import { Transfer } from 'src/tranfer/entity/transfer.entity';
 export const databaseProviders = [
   {
     provide: 'SEQUELIZE',
@@ -14,7 +12,7 @@ export const databaseProviders = [
         password: '1234',
         database: 'psucoin2',
       });
-      sequelize.addModels([User,Profile,Transfer]);
+      sequelize.addModels([User]);
       await sequelize.sync();
       return sequelize;
     },

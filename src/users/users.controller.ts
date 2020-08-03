@@ -10,20 +10,10 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class UsersController {
     constructor(private usersService: UsersService,) { }
 
-    @UseGuards(JwtAuthGuard)
-    @Get('/')
-    getAllUser() {
-        return this.usersService.findAll();
-    }
+    // @UseGuards(JwtAuthGuard)
+    // @Get('/')
+    // getAllUser() {
+    //     return this.usersService.findAll();
+    // }
 
-    @UseGuards(JwtAuthGuard)
-    @Get('/:sid')
-    getUserBySid(@Param('sid') sid: string) {
-        return this.usersService.getBySid(sid);
-    }
-
-    @Post('/signin')
-    signIn(@Body() CreateUserDto:CreateUserDto) {
-        return this.usersService.siginIn(CreateUserDto);
-    }
 }

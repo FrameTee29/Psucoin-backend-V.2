@@ -6,10 +6,10 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
-import { ProfileModule } from 'src/profile/profile.module';
+
 
 @Module({
-  imports: [UsersModule, PassportModule,ProfileModule,
+  imports: [UsersModule, PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '3600s' },
