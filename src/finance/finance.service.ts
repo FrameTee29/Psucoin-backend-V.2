@@ -79,12 +79,17 @@ export class FinanceService {
 
 
 
-    
+
     /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
-    async getBalance() {
-
-
+    async getBalance(username:string) {
+        return new Promise(async (resolve , reject)=>{
+            const publickey = await this.getPublicKey(username);
+            const contract = new web3.eth.Contract(token.contractAbi,token.contractAddress);
+            await contract.methods.balanceOf(publickey).call().then(res=>{
+                resolve(res/1000000000000000000);
+            })
+        })
     }
 
     /*----------------------------------End Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/

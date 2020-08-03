@@ -15,6 +15,10 @@ export class UsersService {
     constructor(@Inject('USERS_REPOSITORY') private user: typeof User,
         private financeService: FinanceService) { }
 
+
+
+
+
     /*-----------------------------------Method หาข้อมูล User ในระบบ-------------------------------------*/
     async getUserByPK(username: string) {
 
@@ -41,8 +45,7 @@ export class UsersService {
 
         // Check ก่อนว่ามี Username นี้ในระบบหรือยัง
         const userInDatabase = await this.getUserByPK(CreateUserDto.username);
-        await this.financeService.getPrivateKey("teeraphat");
-
+    
         if (userInDatabase) { // ถ้ามีผู้ใช้งานในระบบแล้วจะ รีเทิร์นว่ามีผู้ใช้งานในระบบแล้ว
             return "Already have this account";
         }
@@ -54,19 +57,14 @@ export class UsersService {
             userinformation.lastname = CreateUserDto.lastname;
             userinformation.cid = CreateUserDto.cid;
             userinformation.email = CreateUserDto.email;
-
             const keys = await this.financeService.createWallet(); // ไปสร้าง publickey and private key 
-
             userinformation.publickey = keys.address;
             userinformation.privatekey = keys.privateKey.toUpperCase().substring(2); // ทำเป็นตัวใหญ่ และทำการตัด 0x ด้านหน้าออก
             userinformation.coin = 0;
-            return await this.user.create(userinformation.toJSON());;
+            return await this.user.create(userinformation.toJSON());
         }
     }
     /*--------------------------------End Method ในการสมัคร-------------------------------------------*/
-
-
-
 
 }
 
