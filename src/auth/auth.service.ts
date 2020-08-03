@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { CreateProfileDto } from './dto/createProfile.dto';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { usersProviders } from 'src/users/entity/users.providers';
 
 var sha256 = require('sha256');
 
@@ -18,20 +19,20 @@ export class AuthService {
   async validateUser(username: string, password: string): Promise<any> {
 
     //check ว่ามี username ใน ระบบไหม
-    const userInDatabase = await this.usersService.getUserByPK(username);
-  //ถ้ามีแล้วให้ดึงข้อมูลขึ้นมา และ อัพเดทเหรียญ
-  //ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
+    const userInDatabase = await this.usersService.getDetailUserByPK(username);
+    //ถ้ามีแล้วให้ดึงข้อมูลขึ้นมา และ อัพเดทเหรียญ
+    //ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
 
-
+    // return userInDatabase;
+    return userInDatabase
   }
 
 
   //  เพิ่มการทำงาน login จากที่สมัคร
   async login(user: any) {
-    const info = user.toJSON();
-    const payload = { username: info[0], password: info[1] } // เอาข้อมูลที่ได้มาเก็บไว้ใน payload
+    const payload = { username: user.username};
     return {
-      access_token: this.jwtService.sign(payload), // แล้วทำการ return Access token 
+      access_token: this.jwtService.sign(payload),
     };
   }
 

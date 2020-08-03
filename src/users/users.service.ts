@@ -10,10 +10,15 @@ const web3 = new Web3('https://ropsten.infura.io/v3/8d1234baedad4a588a49a51ac993
 // import * as bcrypt from 'bcrypt';
 // import Axios from 'axios';
 
+
+
 @Injectable()
 export class UsersService {
-    constructor(@Inject('USERS_REPOSITORY') private user: typeof User,
-        private financeService: FinanceService) { }
+    constructor(
+        @Inject('USERS_REPOSITORY') private user: typeof User,
+        private financeService: FinanceService,
+    ) {}
+
 
 
 
@@ -40,12 +45,34 @@ export class UsersService {
 
 
 
+    /*-----------------------------------Method หาข้อมูลรายละเอียดของ User ในระบบ-------------------------------------*/
+    async getDetailUserByPK(username: string) {
+
+        const account = await this.user.findByPk(username);
+        if (account) { // ถ้ามีข้อมูล user นี้อยู่ในระบบให้รีเทิร์น 1 แสดงว่ามีแล้ว
+            return account;
+        }
+        return false; // ถ้าไม่มีข้อมูลในระบบให้รีเทิร์น 0 
+
+    }
+    /*--------------------------------End Method หาข้อมูลรายละเอียดของ User ในระบบ------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
     /*-------------------------------------- Method ในการสมัคร-------------------------------------------*/
     async SignupUser(CreateUserDto: CreateUserDto) {
 
         // Check ก่อนว่ามี Username นี้ในระบบหรือยัง
         const userInDatabase = await this.getUserByPK(CreateUserDto.username);
-    
+
         if (userInDatabase) { // ถ้ามีผู้ใช้งานในระบบแล้วจะ รีเทิร์นว่ามีผู้ใช้งานในระบบแล้ว
             return "Already have this account";
         }
@@ -65,6 +92,10 @@ export class UsersService {
         }
     }
     /*--------------------------------End Method ในการสมัคร-------------------------------------------*/
+
+
+
+
 
 }
 
