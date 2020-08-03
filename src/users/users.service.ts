@@ -16,7 +16,7 @@ export class UsersService {
 
         const userinformation = new User();
         userinformation.username = CreateUserDto.username;
-        userinformation.password = CreateUserDto.password;
+        userinformation.password = await sha256(CreateUserDto.password);
         userinformation.firstname = CreateUserDto.firstname;
         userinformation.lastname = CreateUserDto.lastname;
         userinformation.cid = CreateUserDto.cid;
@@ -24,7 +24,7 @@ export class UsersService {
         userinformation.privatekey = CreateUserDto.privatekey;
         userinformation.coin = CreateUserDto.coin;
 
-        return userinformation;
+        return await this.user.create(userinformation.toJSON());;
     }
 
 
