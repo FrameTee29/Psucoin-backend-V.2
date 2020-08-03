@@ -28,9 +28,9 @@ export class AuthService {
   //  เพิ่มการทำงาน login จากที่สมัคร
   async login(user: any) {
     const info = user.toJSON();
-    const payload = { username: info[0], password: info[1] }
+    const payload = { username: info[0], password: info[1] } // เอาข้อมูลที่ได้มาเก็บไว้ใน payload
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload), // แล้วทำการ return Access token 
     };
   }
 
