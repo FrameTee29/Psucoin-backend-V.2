@@ -7,7 +7,7 @@ import { FinanceModule } from 'src/finance/finance.module';
 import { FinanceService } from 'src/finance/finance.service';
 
 @Module({
-  imports: [DatabaseModule,FinanceModule],
+  imports: [DatabaseModule],
   controllers: [UsersController],
   providers: [UsersService,FinanceService,...usersProviders],
   exports: [UsersService],

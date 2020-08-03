@@ -10,6 +10,7 @@ import { User } from 'src/users/entity/users.entity';
 @Injectable()
 export class FinanceService {
 
+    constructor(@Inject('USERS_REPOSITORY') private user: typeof User,){}
     
 
     /*---------------------------------- Method ในสร้าง Wallet----------------------------------------*/
@@ -31,7 +32,14 @@ export class FinanceService {
     /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
     async getPublicKey(username:string) {
-       
+        const publicKey = await this.user.findOne({
+            plain: true,
+            attributes: ['publickey'],
+            where: {
+                username: username
+            }
+        })
+        return publicKey.publickey; 
     }
 
     /*----------------------------------End Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
@@ -45,11 +53,7 @@ export class FinanceService {
     /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
     async getPrivateKey() {
-        return new Promise(async (resolve, reject) => {
-
-
-        })
-
+        
 
 
     }
@@ -67,22 +71,12 @@ export class FinanceService {
     /*---------------------------------- Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
     async getBalance() {
-        // return new Promise(async (resolve, reject) => {
-
-
-        // })
-       
 
 
     }
 
     /*----------------------------------End Method ในดึงค่าจำนวนเหรียญที่มี----------------------------------------*/
 
-    //
-    //
-    //
-    //
-    //
-    //
+
 
 }
