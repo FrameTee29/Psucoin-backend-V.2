@@ -99,12 +99,12 @@ export class UsersService {
 
     /*-----------------------------------Method updateEmail-------------------------------------*/
     async updateEmail(CreateUserDto : CreateUserDto) {
-        const data = await this.user.findOne({ where: { username: CreateUserDto.username } })
+        //หาข้อมูลใน DB ว่ามีไหม
+        const data = await this.user.findByPk(CreateUserDto.username); 
         if(data){
-            return await data.update(CreateUserDto);
+            return await data.update(CreateUserDto); // เอาข้อมูลเก่่ามาแล้ว merge กับข้อมูลใหม่แล้ว update
         }
         return false;
-
     }
     /*--------------------------------End Method updateEmail------------------------------------*/
 
