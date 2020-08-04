@@ -17,7 +17,7 @@ export class UsersService {
     constructor(
         @Inject('USERS_REPOSITORY') private user: typeof User,
         private financeService: FinanceService,
-    ) {}
+    ) { }
 
 
 
@@ -92,6 +92,27 @@ export class UsersService {
         }
     }
     /*--------------------------------End Method ในการสมัคร-------------------------------------------*/
+
+
+
+
+
+    /*-----------------------------------Method updateEmail-------------------------------------*/
+    async updateEmail(req: any) {
+        const updateData = new CreateUserDto();
+        const data = await this.user.findOne({ where: { username: req.username } })
+        updateData.username = data.username;
+        updateData.firstname = data.firstname;
+        updateData.lastname = data.lastname;
+        updateData.cid = data.cid;
+        updateData.email = req.email;
+        updateData.coin = await this.financeService.getBalance(req.username);
+        await data.update(updateData);
+        
+        return " Update Email Success " ;
+
+    }
+    /*--------------------------------End Method updateEmail------------------------------------*/
 
 
 
