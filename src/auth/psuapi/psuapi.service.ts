@@ -18,8 +18,9 @@ export class PsuapiService {
             data.username = Mypsupassport[0];
             data.password = await sha256(password);
             data.firstname = Mypsupassport[1];
+            data.lastname = Mypsupassport[2];
 
-            console.log(data.firstname);
+            console.log(data.lastname);
             
         }
 
