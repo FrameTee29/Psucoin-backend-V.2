@@ -35,11 +35,7 @@ export class AuthService {
     else {//ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
       
     }
-    
-    
-    
-
-
+  
   }
 
 
