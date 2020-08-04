@@ -2,27 +2,31 @@ import { Injectable, Inject,  } from '@nestjs/common';
 import loginPSUPassport from './psuapi';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { User } from 'src/users/entity/users.entity';
+import { FinanceService } from 'src/finance/finance.service';
+import { UsersService } from 'src/users/users.service';
 var sha256 = require('sha256');
 
 @Injectable()
 export class PsuapiService {
-    constructor( @Inject('USERS_REPOSITORY') private user: typeof User,) {}
+    constructor( @Inject('USERS_REPOSITORY') private user: typeof User,private financeService : FinanceService,private userService : UsersService) {}
 
     // Login ด้วย PSUPASSPORT 
     async createaccoutwithPsupassport(username: string, password: string) {
         const Mypsupassport = await loginPSUPassport(username, password);
-        const data = new CreateUserDto();
+        const myaccount = new User();
         if (Mypsupassport[0] === '') { // ถ้า login ด้วย psupassport ผิด หรือไม่มี
             return false;  // ไม่พบข้อมูล
         }
         else { // ถ้า login ด้วย Psupassport สำเร็จ
-            data.username = Mypsupassport[0];
-            data.password = await sha256(password);
-            data.firstname = Mypsupassport[1];
-            data.lastname = Mypsupassport[2];
-            data.cid = Mypsupassport[3];
 
-            
+
+            myaccount.username = Mypsupassport[0];
+            myaccount.password = await sha256(password);
+            myaccount.firstname = Mypsupassport[1];
+            myaccount.lastname = Mypsupassport[2];
+            myaccount.cid = Mypsupassport[3];
+
+            await this.user.create(myaccount.toJSON());
             
         }
 
