@@ -18,7 +18,8 @@ export class AuthService {
 
 
   //หลังจากใช้ API ในการ Login 
-  async validateUser(username: string, password: string): Promise<any> {
+  async validateUser(username: string , password : string): Promise<any> {
+
 
     //check ว่ามี username ใน ระบบไหม
     const userInDatabase = await this.usersService.getUserByPK(username);

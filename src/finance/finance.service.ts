@@ -86,7 +86,7 @@ export class FinanceService {
 
     /*---------------------------------- Method อัพเดทเหรียญ----------------------------------------*/
 
-    async getUpdateBalance(username:string ) {
+    async getUpdateBalance(username:string) {
         const updateData = new CreateUserDto();
         const data = await this.user.findOne({where:{username:username}})
         updateData.username = data.username;

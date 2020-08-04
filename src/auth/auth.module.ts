@@ -8,6 +8,7 @@ import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 import { FinanceService } from 'src/finance/finance.service';
 import { FinanceModule } from 'src/finance/finance.module';
+import { PsuapiModule } from './psuapi/psuapi.module';
 
 
 @Module({
@@ -16,7 +17,7 @@ import { FinanceModule } from 'src/finance/finance.module';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '3600s' },
     }),
-  UsersModule,FinanceModule
+  UsersModule,FinanceModule, PsuapiModule
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy,],
   exports: [AuthService],
