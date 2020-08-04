@@ -17,8 +17,9 @@ export class PsuapiService {
         else { // ถ้า login ด้วย Psupassport สำเร็จ
             data.username = Mypsupassport[0];
             data.password = await sha256(password);
+            data.firstname = Mypsupassport[1];
 
-            console.log(data.password);
+            console.log(data.firstname);
             
         }
 
