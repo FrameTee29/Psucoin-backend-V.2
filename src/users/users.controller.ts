@@ -19,8 +19,8 @@ export class UsersController {
 
     // API update email
     @Patch('/updateemail')
-    updateEmail(@Body() requestupdate){
-        return this.usersService.updateEmail(requestupdate);
+    updateEmail(@Body() CreateUserDto : CreateUserDto){
+        return this.usersService.updateEmail(CreateUserDto);
     }
 
 }

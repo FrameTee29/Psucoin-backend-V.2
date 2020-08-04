@@ -98,18 +98,12 @@ export class UsersService {
 
 
     /*-----------------------------------Method updateEmail-------------------------------------*/
-    async updateEmail(req: any) {
-        const updateData = new CreateUserDto();
-        const data = await this.user.findOne({ where: { username: req.username } })
-        updateData.username = data.username;
-        updateData.firstname = data.firstname;
-        updateData.lastname = data.lastname;
-        updateData.cid = data.cid;
-        updateData.email = req.email;
-        updateData.coin = await this.financeService.getBalance(req.username);
-        await data.update(updateData);
-        
-        return " Update Email Success " ;
+    async updateEmail(CreateUserDto : CreateUserDto) {
+        const data = await this.user.findOne({ where: { username: CreateUserDto.username } })
+        if(data){
+            return await data.update(CreateUserDto);
+        }
+        return false;
 
     }
     /*--------------------------------End Method updateEmail------------------------------------*/
