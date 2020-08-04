@@ -37,8 +37,6 @@ export class AuthService {
     }
     else {//ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
 
-      console.log("กำลังจะสร้างด่้วย PSU PASSPORT");
-
       await this.psuapiService.createaccoutwithPsupassport(username,password);
 
 

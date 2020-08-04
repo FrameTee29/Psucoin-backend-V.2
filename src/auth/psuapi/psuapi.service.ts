@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import  loginPSUPassport  from './psuapi';
 
 @Injectable()
 export class PsuapiService {
@@ -6,7 +7,7 @@ export class PsuapiService {
 
     // Login ด้วย PSUPASSPORT 
     async createaccoutwithPsupassport(username:string , password:string){
-        console.log(username+password)
+        await loginPSUPassport(username,password);
     }
 
 }
