@@ -17,7 +17,7 @@ import { PsuapiModule } from './psuapi/psuapi.module';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '3600s' },
     }),
-  UsersModule,FinanceModule, PsuapiModule
+  UsersModule,FinanceModule, PsuapiModule , PsuapiModule
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy,],
   exports: [AuthService],

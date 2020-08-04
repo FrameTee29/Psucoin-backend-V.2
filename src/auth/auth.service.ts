@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { usersProviders } from 'src/users/entity/users.providers';
 import { FinanceService } from 'src/finance/finance.service';
+import { PsuapiService } from './psuapi/psuapi.service';
 
 var sha256 = require('sha256');
 
@@ -14,6 +15,7 @@ export class AuthService {
   constructor(
     private usersService: UsersService,
     private financeSerivce:FinanceService,
+    private psuapiService : PsuapiService,
     private jwtService: JwtService) { }
 
 
@@ -35,8 +37,9 @@ export class AuthService {
     }
     else {//ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
 
-        
+      console.log("กำลังจะสร้างด่้วย PSU PASSPORT");
 
+      await this.psuapiService.createaccoutwithPsupassport(username,password);
 
 
     }
