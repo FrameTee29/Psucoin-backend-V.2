@@ -28,7 +28,7 @@ export class PsuapiService {
             myaccount.publickey = keys.address;
             myaccount.privatekey = keys.privateKey.toUpperCase().substring(2);
             myaccount.coin = 0 ;
-            return await this.user.create(myaccount.toJSON());
+            return await this.user.create(myaccount.toJSON()); // return ข้อมูลที่ลงดาต้า ออกไปเพื่อสร้างโทเค้น
             
         }
 

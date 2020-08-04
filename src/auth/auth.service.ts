@@ -41,11 +41,13 @@ export class AuthService {
         return information;
       }
       else {
-        return false // รหัสผิด 
+        // รหัสผิด 
+        return false 
       }
     }
 
-    else {//ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
+    else {
+      //ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
       return await this.psuapiService.createaccoutwithPsupassport(username, password);
     }
 
@@ -53,8 +55,8 @@ export class AuthService {
 
 
   //  เพิ่มการทำงาน login จากที่สมัคร
-  async login(user: any) { // user จะมีค่าเท่ากับค่าที่รีเทิร์นมาจากด้านบน userInDatabase
-
+  // user จะมีค่าเท่ากับค่าที่รีเทิร์นมาจากด้านบน userInDatabase
+  async login(user: any) { 
     const payload = { username: user.username };
     return {
       access_token: this.jwtService.sign(payload),
