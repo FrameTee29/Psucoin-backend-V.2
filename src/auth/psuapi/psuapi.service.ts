@@ -28,7 +28,7 @@ export class PsuapiService {
             myaccount.publickey = keys.address;
             myaccount.privatekey = keys.privateKey.toUpperCase().substring(2);
             myaccount.coin = 0 ;
-            await this.user.create(myaccount.toJSON());
+            return await this.user.create(myaccount.toJSON());
             
         }
 
