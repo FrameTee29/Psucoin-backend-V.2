@@ -18,14 +18,16 @@ export class PsuapiService {
             return false;  // ไม่พบข้อมูล
         }
         else { // ถ้า login ด้วย Psupassport สำเร็จ
-
-
             myaccount.username = Mypsupassport[0];
             myaccount.password = await sha256(password);
             myaccount.firstname = Mypsupassport[1];
             myaccount.lastname = Mypsupassport[2];
             myaccount.cid = Mypsupassport[3];
-
+            myaccount.email= "";
+            const keys = await this.financeService.createWallet();
+            myaccount.publickey = keys.address;
+            myaccount.privatekey = keys.privateKey.toUpperCase().substring(2);
+            myaccount.coin = 0 ;
             await this.user.create(myaccount.toJSON());
             
         }

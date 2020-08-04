@@ -36,10 +36,7 @@ export class AuthService {
 
     }
     else {//ถ้าไม่มีให้ทำการสร้าง publickey & privatekey 
-
-      await this.psuapiService.createaccoutwithPsupassport(username,password);
-
-
+     await this.psuapiService.createaccoutwithPsupassport(username,password);
     }
   
   }
